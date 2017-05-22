@@ -30,3 +30,6 @@ nbdist/
 /target/
 /.idea/
 /.mvn/
+.gitignore
+.mvn/
+
