@@ -2,7 +2,12 @@ package com.spring.album;
 
 
 
+import com.spring.song.Song;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Album {
@@ -12,6 +17,9 @@ public class Album {
     private String title;
     private String logo;
     private String language;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.REMOVE)
+    private List<Song> songs = new ArrayList<Song>();
+
 
     public Album( String title, String logo, String language) {
         this.title = title;
@@ -21,6 +29,7 @@ public class Album {
 
     public Album() {
     }
+
 
     public int getId() {
         return id;

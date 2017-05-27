@@ -18,6 +18,9 @@ public class AlbumService {
         albumRepository.findAll().forEach(albums::add);
         return albums;
     }
+    public Album getAlbumById(int album_id){
+        return albumRepository.findOne(album_id);
+    }
 
     public List<Album> getByLanguage(String language) {
         return albumRepository.findByLanguage(language);

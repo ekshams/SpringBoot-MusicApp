@@ -1,15 +1,17 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.tymeleaf.org">
+<html>
 <!--<html>-->
 <head>
+    <base href="/">
     <title>Hello</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
+    <!--<link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body ng-app="app" ng-controller="MusicController as vm">
 <!--<h1 data-th-text="${message}"></h1>-->
-
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <nav class="navbar navbar-inverse">
@@ -22,7 +24,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Brand</a>
+                        <a class="navbar-brand" href="/">Viber Album</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,11 +45,11 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-left">
+                        <form class="navbar-form navbar-left" id="navBarSearchForm">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search"/>
+                                <input type="text" class="form-control" placeholder="Search" ng-model="vm.searchData"/>
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-primary" ng-click="vm.searchAlbum()">Search</button>
                         </form>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">Link</a></li>
@@ -68,47 +70,35 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-                <div class="col-md-4 col-md-offset-4 form-group">
-                    <button  type="button" class="btn btn-primary form-control" ng-click="vm.getAll()">All</button>
-                    <select class="form-control" ng-model="itemSelected" ng-change="vm.getByLanguage(itemSelected.language)"
-                            data-ng-options="item as item.language for item in vm.all_albums">
-                    </select>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="btn-group" role="group" aria-label="...">
+                <a href="/" type="button" class="btn btn-primary" ng-click="vm.refresh_album()"><span class="glyphicon glyphicon-th-list"></span>&nbsp;Albums</a>
+                <a href="/new-album" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;New Album</a>
+
+
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Languages
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="language in vm.languages"><a href="#" ng-click="vm.getByLanguage(language)">{{language}}</a></li>
+                    </ul>
                 </div>
-
-
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Language</th>
-                    <th style="width: 90px;"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="album in vm.albums">
-                    <td>{{$index}}</td>
-                    <td>{{album.title}}</td>
-                    <td>{{album.language}}</td>
-                    <td><button type="button" class="btn btn-danger" ng-click="vm.deleteAlbum(album.id)">Delete</button> </td>
-                </tr>
-
-                </tbody>
-            </table>
+            </div>
         </div>
     </div>
 
+    <div ng-view></div>
 </div>
-
-
-
-
-
 </body>
-<script src="/static/js/jquery-3.2.1.js" type="text/javascript" th:src="@{/js/jquery-3.2.1.js}"></script>
-<script src="/static/js/bootstrap.min.js" type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
-<script src="/static/js/angular.js" type="text/javascript" th:src="@{/js/angular.js}"></script>
-<script src="/static/app/app.module.js" type="text/javascript" th:src="@{/app/app.module.js}"></script>
-<script src="/static/app/music.controller.js" type="text/javascript" th:src="@{/app/music.controller.js}"></script>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
+<script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+<script src="app/app.module.js"></script>
+<script src="app/music.controller.js"></script>
+<script src="app/directive.js"></script>
+<script src="app/service.js"></script>
 </html>

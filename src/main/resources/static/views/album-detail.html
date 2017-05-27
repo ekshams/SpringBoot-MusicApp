@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-3 col-md-offset-1" style="margin-top: 20px;">
+        <div class="thumbnail">
+            <img ng-src="../../../../../images/{{detailctrl.album_logo}}" height="175px" width="200px" alt="..."/>
+            <div class="caption" style="color: white;">
+                <h4>{{detailctrl.album_title}}</h4>
+                <h3>
+                    <a href="/edit-album/{{detailctrl.id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="#"><span class="glyphicon glyphicon-trash" ng-click="vm.deleteAlbum(detailctrl.id)"></span></a>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8" style="margin-top: 20px;">
+        <table class="table table-hover" style="background-color: white">
+            <thead>
+                <tr>
+                    <th width="100px"></th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th width="100px"><a  href="/album-detail/{{detailctrl.id}}/new-song" class="btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="song in detailctrl.songs">
+                    <td><img ng-src="../../../../../images/{{song.logo}}" height="60px" width="60px"/></td>
+                    <td>{{song.title}}</td>
+                    <td>{{song.artist }}</td>
+                    <td>
+                        <a href="/album-detail/{{detailctrl.id}}/new-song/{{song.id}}" class="btn-sm btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a ng-click="detailctrl.deleteSong(song.id)" class="btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

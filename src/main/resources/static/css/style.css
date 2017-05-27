@@ -1,0 +1,25 @@
+.table>tbody>tr>td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+.img-cell{
+    width:150px;
+}
+
+body{
+    background-color: #122b40;
+}
+
+.thumbnail {
+    background: #212121;
+}
+
+/*#navBarSearchForm input[type=text]{width:430px !important;}*/
+
+.edit-form{
+    color: white;
+    width: 270px;
+
+}
