@@ -7,6 +7,7 @@
                     <h4>{{album.title}}</h4>
                     <h3>
                         <a href="/edit-album/{{album.id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <!--<a href="#"><span class="glyphicon glyphicon-trash" ng-confirm-click="Are you sure to delete this album ?" confirmed-click="vm.deleteAlbum(album.id)"></span></a>-->
                         <a href="#"><span class="glyphicon glyphicon-trash" ng-click="vm.deleteAlbum(album.id)"></span></a>
                     </h3>
                 </div>

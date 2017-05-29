@@ -49,11 +49,17 @@
             }
         }
         function deleteAlbum(id) {
-         var url = '/albums/'+id;
-         $http.delete(url).then(function (response) {
-             vm.albums = vm.all_albums = response.data;
-             vm.languages = createLanguages.getLanguages(vm.albums);
-         });
+            bootbox.confirm({size: 'small', message: "Are you sure to delete this album?", callback:function (confirm) {
+                if (confirm === true) {
+                    var url = '/albums/'+id;
+                    $http.delete(url).then(function (response) {
+                        vm.albums = vm.all_albums = response.data;
+                        vm.languages = createLanguages.getLanguages(vm.albums);
+                    });
+                }
+            }
+            });
+
         }
 
         function searchAlbum(){
@@ -212,13 +218,18 @@
         }
 
         function deleteSong(song_id) {
-            var album_id = $routeParams.id;
-            var url = "/albums/"+album_id+"/songs/"+song_id;
+            bootbox.confirm({size: 'small', message: "Are you sure to delete this song?", callback:function (confirm) {
+                if (confirm === true) {
+                    var album_id = $routeParams.id;
+                    var url = "/albums/"+album_id+"/songs/"+song_id;
 
-            var albumPromise = $http.delete(url);
-            albumPromise.then(function (response) {
-                detailctrl.songs = $scope.$parent.vm.songs = response.data;
-            })
+                    var albumPromise = $http.delete(url);
+                    albumPromise.then(function (response) {
+                        detailctrl.songs = $scope.$parent.vm.songs = response.data;
+                    })
+                }
+            }
+            });
 
         }
 
