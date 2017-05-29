@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-md-4 col-md-offset-4" style="margin-top: 20px;">
         <form class="edit-form" ng-submit="editctrl.saveSong()" name="myform">
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error': myform.song_title.$touched && myform.song_title.$invalid}">
                 <label for="title">Song Title:</label>
-                <input type="text" class="form-control" id="title" ng-model="editctrl.song_title" required>
+                <input type="text" class="form-control" name="song_title" id="title" ng-model="editctrl.song_title" required>
+                <span ng-show="myform.song_title.$touched && myform.song_title.$invalid" class="help-block">The Song title is required</span>
             </div>
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error': myform.song_artist.$touched && myform.song_artist.$invalid}">
                 <label for="language">Artist Name:</label>
-                <input type="text" class="form-control" id="language" ng-model="editctrl.song_artist" required="required">
+                <input type="text" name="song_artist" class="form-control" id="language" ng-model="editctrl.song_artist" required="required">
+                <span ng-show="myform.song_artist.$touched && myform.song_artist.$invalid" class="help-block">The Song artist is required</span>
             </div>
             <div class="form-group" ng-show="editctrl.song_edit_mode">
                 <img src="../../../../../images/{{editctrl.current_logo}}" height="100px" width="100px" alt="..."/>
@@ -18,10 +20,10 @@
             </div>
             <div class="form-group" ng-if="editctrl.song_edit_mode">
                 <label for="logo">Logo:</label>
-                <input type="file" class="form-control" id="logo" file-model="editctrl.song_logo">
+                <input type="file" class="form-control" id="logo1" file-model="editctrl.song_logo">
             </div>
 
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" ng-disabled="myform.$invalid">Submit</button>
             <a href="/album-detail/{{editctrl.album_id}}" class="btn btn-default" ng-click="">Cancel</a>
         </form>
     </div>

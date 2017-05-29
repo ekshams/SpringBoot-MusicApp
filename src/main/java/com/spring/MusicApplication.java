@@ -14,7 +14,6 @@ public class  MusicApplication {
 			if(f.mkdirs()){
 				System.out.println("public/images directory created!!!");
 			}
-
 		}
 		SpringApplication.run(MusicApplication.class, args);
 	}

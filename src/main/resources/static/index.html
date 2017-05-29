@@ -76,13 +76,13 @@
                 <a href="/new-album" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;New Album</a>
 
 
-                <div class="btn-group" role="group">
+                <div class="btn-group" role="group" >
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Languages
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li ng-repeat="language in vm.languages"><a href="#" ng-click="vm.getByLanguage(language)">{{language}}</a></li>
+                        <li ng-repeat="language in vm.languages"><a href="/" ng-click="vm.getByLanguage(language)">{{language}}</a></li>
                     </ul>
                 </div>
             </div>

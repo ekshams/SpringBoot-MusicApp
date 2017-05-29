@@ -12,6 +12,7 @@
         vm.refresh_album = refresh_album;
         vm.searchAlbum = searchAlbum;
 
+
         vm.albums = [];
         vm.songs = [];
         vm.all_albums = [];

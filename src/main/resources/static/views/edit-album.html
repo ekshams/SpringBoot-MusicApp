@@ -1,27 +1,29 @@
 <div class="row">
     <div class="col-md-4 col-md-offset-4" style="margin-top: 20px;">
         <form class="edit-form" ng-submit="editctrl.saveAlbum()" name="myform">
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error': myform.title.$touched && myform.title.$invalid}">
                 <label for="title">Album Title:</label>
-                <input type="text" class="form-control" id="title" ng-model="editctrl.title" required>
+                <input type="text" name="title" class="form-control" id="title" ng-model="editctrl.title" required>
+                <span ng-show="myform.title.$touched && myform.title.$invalid" class="help-block">The Album title is required.</span>
             </div>
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error': myform.language.$touched && myform.language.$invalid}">
                 <label for="language">Language:</label>
-                <input type="text" class="form-control" id="language" ng-model="editctrl.language" required="required">
+                <input type="text" name="language" class="form-control" id="language" ng-model="editctrl.language" required="required">
+                <span ng-show="myform.language.$touched && myform.language.$invalid" class="help-block">The Album language is required.</span>
             </div>
             <div class="form-group" ng-show="editctrl.editMode">
                 <img src="../../../../../images/{{editctrl.current_logo}}" height="100px" width="100px" alt="..."/>
             </div>
             <div class="form-group" ng-if="!editctrl.editMode">
                 <label for="logo">Logo:</label>
-                <input type="file" class="form-control" id="logo" file-model="editctrl.myFile" required="required">
+                <input type="file" name="logo" class="form-control" id="logo" file-model="editctrl.myFile" required="required">
             </div>
             <div class="form-group" ng-if="editctrl.editMode">
                 <label for="logo">Logo:</label>
-                <input type="file" class="form-control" id="logo" file-model="editctrl.myFile">
+                <input type="file" class="form-control" id="logo1" file-model="editctrl.myFile">
             </div>
 
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" ng-disabled="myform.$invalid">Submit</button>
             <a href="/" class="btn btn-default">Cancel</a>
         </form>
     </div>
