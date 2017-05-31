@@ -31,9 +31,9 @@ public class AlbumController {
         return albumService.getAllAlbums();
     }
 
-    @RequestMapping(value = "/albums/{id}", method = RequestMethod.PUT)
-    public List<Album> updateAlbum(@RequestBody Album album, @PathVariable int id){
-        albumService.updateAlbum(album, id);
+    @RequestMapping(value = "/albums", method = RequestMethod.PUT)
+    public List<Album> updateAlbum(@RequestBody Album album){
+        albumService.updateAlbum(album);
         return albumService.getAllAlbums();
     }
 

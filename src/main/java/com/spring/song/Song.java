@@ -25,6 +25,14 @@ public class Song {
         this.logo = logo;
         this.album = new Album("","","");
     }
+    public Song(int id, String title, String artist, String logo) {
+        super();
+        this.id= id;
+        this.title = title;
+        this.artist = artist;
+        this.logo = logo;
+        this.album = new Album("","","");
+    }
 
 
     public Song() {

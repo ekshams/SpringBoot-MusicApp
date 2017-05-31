@@ -30,7 +30,7 @@ public class AlbumService {
         albumRepository.save(album);
     }
 
-    public void updateAlbum(Album album, int id) {
+    public void updateAlbum(Album album) {
         albumRepository.save(album);
 
     }

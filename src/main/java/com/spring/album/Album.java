@@ -26,6 +26,12 @@ public class Album {
         this.logo = logo;
         this.language = language;
     }
+    public Album(int id, String title, String logo, String language) {
+        this.id = id;
+        this.title = title;
+        this.logo = logo;
+        this.language = language;
+    }
 
     public Album() {
     }

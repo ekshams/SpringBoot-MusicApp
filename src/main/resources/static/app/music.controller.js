@@ -124,7 +124,7 @@
                     "logo":logo,
                     "language":editctrl.language
                 };
-                url = "/albums/"+$routeParams.id;
+                url = "/albums/";
                 albumPromise = $http.put(url, data);
             }else{
                 data = {
